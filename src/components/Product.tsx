@@ -2,19 +2,19 @@ type ProductProps = {
     productName: string;
     price: number;
     image: string;
-    category: string;
-    recommended: boolean;
+    stockStatus: string;
     rating: number | null;
 };
-export default function Product({ productName, price, image, category, recommended, rating}: ProductProps) {
+export default function Product({ productName, price, image, stockStatus, rating}: ProductProps) {
     return (
-        <div className="flex flex-col">  
-            <img src={image} alt={productName} />
-            <h2>{productName}</h2> 
-            <p>price: {price}</p>
-            <p>category: {category}</p>
-            <p>recommended? {recommended}</p>
-            <p>{rating? `rating: ${rating}`: null}</p>
+        <div className="grid grid-rows-5 bg-white shadow-lg">
+            <img className="row-span-3 min-w-full " src={image} alt={productName} />
+            <div className="flex flex-col items-start row-span-2 gap-1 ml-2 mt-4">  
+                <h2 className="font-semibold">{productName.length > 45 ? `${productName.slice(0, 45)}...` :productName}</h2> 
+                <h4 className="font-bold text-red-600 text-2xl">£{price}</h4>
+                <p className="font-medium">{stockStatus === 'G'? 'In Stock ' : 'Out of Stock'}</p>
+                <p>{rating? `rating: ${rating}`: null}</p>
+            </div>
         </div>
     );
 }

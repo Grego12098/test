@@ -20,10 +20,10 @@ export default function Sidebar() {
         queryFn: fetchProducts,
     });
     return (
-        <div className='col-span-1 flex flex-col items-start gap-5'>
+        <>
             {productData?.data.facets.map((category: facetProps) => (
-                <div className="flex flex-col gap-1" key={category.identifier}>
-                    <h3>{category.displayName}</h3>
+                <div className="flex flex-col gap-1 w-4/5 bg-white border shadow-sm mb-2" key={category.identifier}>
+                    <h3 className="font-semibold text-xl mb-2">{category.displayName}</h3>
                     {category.options.map((categoryValue: Options) => (
                         <Checkbox
                             key={categoryValue.identifier}
@@ -33,6 +33,6 @@ export default function Sidebar() {
                     ))}
                 </div>
             ))}
-        </div>
+        </>
     );
 }

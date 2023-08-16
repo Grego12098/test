@@ -6,16 +6,12 @@ interface Price {
     priceIncTax: number;
 }
 
+interface stockStatus {
+    status: string;
+}
+
 interface Image {
     url: string;
-}
-
-interface Category {
-    name: string;
-}
-
-interface Attributes {
-    isRecommended: boolean;
 }
 
 type ProductProps = {
@@ -23,8 +19,7 @@ type ProductProps = {
     productName: string;
     price: Price;
     image: Image;
-    defaultCategory: Category;
-    attributes: Attributes;
+    stockStatus: stockStatus;
     averageRating: number | null;
 };
 
@@ -44,15 +39,14 @@ export default function ProductsGrid() {
     });
     
     return (
-        <div className="col-span-3 grid grid-cols-3 sm:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 w-full">
             {productData?.data.products.map((product: ProductProps) => (
                 <Product
                     key={product.id}
                     productName={product.productName}
                     price={product.price.priceIncTax}
                     image={product.image.url}
-                    category={product.defaultCategory.name}
-                    recommended={product.attributes.isRecommended}
+                    stockStatus={product.stockStatus.status}
                     rating={product.averageRating}
                 />
             ))}    
