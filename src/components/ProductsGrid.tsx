@@ -1,53 +1,31 @@
 import Product from './Product';
-import  fetchProducts  from '../api/fetchProducts';
-import { useQuery } from '@tanstack/react-query';
-
-interface Price {
-    priceIncTax: number;
-}
-
-interface stockStatus {
-    status: string;
-}
-
-interface Image {
-    url: string;
-}
-
-type ProductProps = {
-    id: string;
-    productName: string;
-    price: Price;
-    image: Image;
-    stockStatus: stockStatus;
-    averageRating: number | null;
-};
+import  { FetchProducts }  from '../redux/apiThunk';
+import { useSelector } from 'react-redux';
+import { AppDispatch } from "../redux/store";
+import { useDispatch } from 'react-redux';
+import {productResults, queryParams} from '../redux/searchSlice';
+import { useEffect } from 'react';
+import { ProductProps } from '../types/propTypes';
 
 export default function ProductsGrid() {
-    // currency converter map here? 
-    // image alt text 
-    // name vs external id for category
-    // will need more props for more filtering options
-    
-
-    const {data: productData} = useQuery({
-        queryKey: ['products'],
-        queryFn: fetchProducts,
-        // onSuccess: (data) => {
-        //     return data;
-        // },
-    });
+    const dispatch = useDispatch<AppDispatch>();
+    const params = useSelector(queryParams);
+    useEffect(() => {
+        dispatch(FetchProducts());
+    }, [dispatch, params]);
+    const productData = useSelector(productResults);
     
     return (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 w-full">
-            {productData?.data.products.map((product: ProductProps) => (
+
+            {productData?.map((product: ProductProps) => (
                 <Product
                     key={product.id}
                     productName={product.productName}
                     price={product.price.priceIncTax}
                     image={product.image.url}
                     stockStatus={product.stockStatus.status}
-                    rating={product.averageRating}
+                    averageRating={product.averageRating}
                 />
             ))}    
         </div>

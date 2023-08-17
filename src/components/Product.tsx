@@ -3,9 +3,10 @@ type ProductProps = {
     price: number;
     image: string;
     stockStatus: string;
-    rating: number | null;
+    averageRating: number | null;
 };
-export default function Product({ productName, price, image, stockStatus, rating}: ProductProps) {
+
+export default function Product({ productName, price, image, stockStatus, averageRating}: ProductProps) {
     return (
         <div className="grid grid-rows-5 bg-white shadow-lg">
             <img className="row-span-3 min-w-full " src={image} alt={productName} />
@@ -13,7 +14,7 @@ export default function Product({ productName, price, image, stockStatus, rating
                 <h2 className="font-semibold">{productName.length > 45 ? `${productName.slice(0, 45)}...` :productName}</h2> 
                 <h4 className="font-bold text-red-600 text-2xl">£{price}</h4>
                 <p className="font-medium">{stockStatus === 'G'? 'In Stock ' : 'Out of Stock'}</p>
-                <p>{rating? `rating: ${rating}`: null}</p>
+                <p>{averageRating? `rating: ${averageRating}`: null}</p>
             </div>
         </div>
     );

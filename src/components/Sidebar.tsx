@@ -1,27 +1,14 @@
-import  fetchProducts  from '../api/fetchProducts';
-import { useQuery } from '@tanstack/react-query';
 import Checkbox from './Checkbox';
-
-interface Options {
-    identifier: string;
-    displayValue: string;
-    productCount: number;
-}
-
-type facetProps = {
-    identifier: string;
-    displayName: string;
-    options: Options[];
-}
+import { facetResults } from '../redux/searchSlice';
+import { useSelector } from 'react-redux';
+import { facetProps, Options } from '../types/propTypes';
 
 export default function Sidebar() {
-    const {data: productData} = useQuery({
-        queryKey: ['products'],
-        queryFn: fetchProducts,
-    });
+    const facetData = useSelector(facetResults);
+    
     return (
         <>
-            {productData?.data.facets.map((category: facetProps) => (
+            {facetData?.map((category: facetProps) => (
                 <div className="flex flex-col gap-1 w-4/5 bg-white border shadow-sm mb-2" key={category.identifier}>
                     <h3 className="font-semibold text-xl mb-2">{category.displayName}</h3>
                     {category.options.map((categoryValue: Options) => (

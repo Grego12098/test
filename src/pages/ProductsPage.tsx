@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar';
 import Select from '../components/Select';
 import { useState, useEffect } from 'react';
 export default function ProductsPage() {
-    const [sidebarHidden, setSidebarHidden] = useState(true);
+    const [sidebarHidden, setSidebarHidden] = useState<boolean>(true);
     function showSidebar() {
         setSidebarHidden(prevState => !prevState); 
     }

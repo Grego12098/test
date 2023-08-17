@@ -7,9 +7,7 @@ function App() {
     staleTime: 1000 * 60 * 5 } }});
   return (
     <QueryClientProvider client={queryClient}>
-
-        <ProductsPage/>
-
+      <ProductsPage/>
     </QueryClientProvider>
   )
 }
