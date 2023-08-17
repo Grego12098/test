@@ -2,7 +2,7 @@
 
 I have used the API to display the products, pulling relevant data from each product object to create the card; and using stockStatus: 'G' to mean in stock, and any other stockStatus to mean out of stock. 
 
-I also used the facets object from the API response to create categories for the sidebar on the left. 
+I also used the facets object from the API response to create categories for the sidebar on the left. This reduced the code needed to create the sidebar, and since we already have to fetch from the api to display the products, the trade off in performance time is not too significant.
 
 I've used tailwind CSS to easily create a responsive design by mapping over reused components. 
 
