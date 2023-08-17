@@ -3,33 +3,10 @@ import { RootState } from './store';
 import { FetchProducts } from './apiThunk';
 import { ProductProps, facetProps } from '../types/propTypes';
 
-type setValuePayload = {
-    query?: string;
-    pageNumber?: number;
-    size?: number;
-    additionalPages?: number;
-    sort?: number;
-    // facets?: FacetsTypes[];
-};
-
 export type ResultTypes = {
     products: ProductProps[];
     facets: facetProps[];
 };
-
-// type priceRangeTypes = {
-//     gte: number;
-//     lte?: number;
-// };
-// type OptionTypes = {
-//     identifier : string;
-//     value: string | priceRangeTypes;
-// };
-
-// type FacetsTypes = {
-//     identifier : string;
-//     options: OptionTypes[];
-// };
 
 type QueryParamTypes = {
     query: string;
@@ -37,7 +14,6 @@ type QueryParamTypes = {
     size: number;
     additionalPages: number;
     sort: number;
-    // facets: FacetsTypes[];
 };
 
 type SelectTypes = {
@@ -52,12 +28,19 @@ const initialState: SelectTypes = {
         size: 0,
         additionalPages: 0,
         sort: 1,
-        // facets: {},
     },
     results: {
         products: [],
         facets: [],
     }
+};
+
+type setValuePayload = {
+    query?: string;
+    pageNumber?: number;
+    size?: number;
+    additionalPages?: number;
+    sort?: number;
 };
 
 export const selectSlice = createSlice({
@@ -67,7 +50,6 @@ export const selectSlice = createSlice({
         setValue: (state, action: PayloadAction<setValuePayload>) => {
             const params = state.queryParams;
             state.queryParams = { ...params, ...action.payload };
-            console.log(state);
         }
     },
     extraReducers: (builder) => { 
@@ -80,7 +62,6 @@ export const selectSlice = createSlice({
 });
 
 export const { setValue } = selectSlice.actions;
-export const sortValue = (state: RootState) => state.select;
 export default selectSlice.reducer;
 
 export const productResults = (state: RootState) => state.select.results.products;

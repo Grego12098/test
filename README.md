@@ -1,27 +1,16 @@
-# React + TypeScript + Vite
+# Technical Test for Victoria Plumbing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I have used the API to display the products, pulling relevant data from each product object to create the card; and using stockStatus: 'G' to mean in stock, and any other stockStatus to mean out of stock. 
 
-Currently, two official plugins are available:
+I also used the facets object from the API response to create categories for the sidebar on the left. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I've used tailwind CSS to easily create a responsive design by mapping over reused components. 
 
-## Expanding the ESLint configuration
+I used Redux Toolkit for state management in regards to the api request, as I needed to be able to alter the payload for the request using variables from different components, such as from the Recommended Dropdown and the Load More Button.  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+By experimenting with the API I determined a sort value of 1 returns the products in order of Recommended, 2 returns them by lowest price, 3 by highest price, and 4 by the highest discount. I used these values to alter the API payload using the Recommended Dropdown. 
 
-- Configure the top-level `parserOptions` property like this:
+Given more time, I would have used Redux to create the logic to automatically add objects within the facets key value pair of the payload when checkboxes are ticked, and remove them when they're unticked, in order to enable the use of the sidebar. 
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+This struck me as a better approach as opposed to using array methods, such as filter and sort, as it enables access to the whole data set when filtering. 
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

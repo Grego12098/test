@@ -18,21 +18,3 @@ export const FetchProducts = createAsyncThunk(
     }
 });
 
-    // "query": "toilets",
-    // "pageNumber": 0,
-    // "size": 0,
-    // "additionalPages": 50,
-    // "sort": 1,
-    // "facets": {
-    //     "prices": [{
-    //           "identifier": "3D-02-FC-D0-B1-8F-65-51",
-    //           "value": {
-    //               "gte": 150.0,
-    //               "lte": 200.0
-    //           }
-    //     }],
-    //     "toiletStyle": [{
-    //           "identifier": "1A-0D-8E-F5-02-80-29-13",
-    //           "value": "Modern"
-    //     }]
-    // } 

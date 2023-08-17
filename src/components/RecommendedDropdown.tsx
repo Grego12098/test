@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setValue } from '../redux/searchSlice';
 import { RootState } from '../redux/store';
-export default function Select() {
+export default function RecommendedDropdown() {
     const currentSelectValue = useSelector((state: RootState) => state.select.queryParams.sort);
     const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ export default function Select() {
 
     return (
         <>
-            <select aria-label="sort-by" className='w-[40%] h-12' onChange={handleChange} defaultValue={currentSelectValue}>
+            <select aria-label="sort-by" className='w-1/2 sm:w-[40%] h-12' onChange={handleChange} defaultValue={currentSelectValue}>
                 <option value={1}>Recommended</option>
                 <option value={2}>Lowest Price</option>
                 <option value={3}>Highest Price</option>

@@ -3,6 +3,7 @@ export type ProductProps = {
     productName: string;
     price: {
         priceIncTax: number;
+        wasPriceIncTax: number | null;
     };
     image: {
         url: string;
@@ -11,6 +12,7 @@ export type ProductProps = {
         status: string;
     };
     averageRating: number | null;
+    reviewsCount: number | null;
 };
 
 export interface Options {
