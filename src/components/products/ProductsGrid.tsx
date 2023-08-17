@@ -1,4 +1,4 @@
-import Product from './Product';
+import ProductCard from './ProductCard';
 import  { FetchProducts }  from '../../redux/apiThunk';
 import { useSelector } from 'react-redux';
 import { AppDispatch } from "../../redux/store";
@@ -19,7 +19,7 @@ export default function ProductsGrid() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
 
             {productData?.map((product: ProductProps) => (
-                <Product
+                <ProductCard
                     key={product.id}
                     productName={product.productName}
                     price={product.price.priceIncTax}

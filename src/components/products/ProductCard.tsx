@@ -8,7 +8,7 @@ type ProductProps = {
     reviewsCount: number | null;
 };
 
-export default function Product({ productName, price, oldPrice, image, stockStatus, averageRating, reviewsCount}: ProductProps) {
+export default function ProductCard({ productName, price, oldPrice, image, stockStatus, averageRating, reviewsCount}: ProductProps) {
     return (
         <div className="grid grid-rows-5 bg-white shadow-lg ">
             <img className="row-span-3 min-w-full " src={image} alt={productName} />
