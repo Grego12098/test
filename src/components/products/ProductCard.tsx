@@ -19,7 +19,7 @@ export default function ProductCard({ productName, price, oldPrice, image, stock
                     <del>{oldPrice? `Was £${oldPrice}`: null}</del>
                 </div>
                 <p className="font-medium text-lg">{stockStatus === 'G'? 'In Stock ' : 'Out of Stock'}</p>
-                <p className="mb-2">{averageRating? `rating: ${averageRating}/5`: null} {reviewsCount? `(${reviewsCount})`: null}</p>
+                <p className="mb-2">{averageRating? `rating: ${averageRating}/5`: null} {reviewsCount? `(${reviewsCount} reviews)`: null}</p>
             </div>
         </div>
     );
